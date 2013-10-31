@@ -14,7 +14,7 @@ app.configure(function(){
     app.engine('handlebars', exphbs({defaultLayout: 'main'}));
     app.set('view engine', 'handlebars');
 
-    app.use(express.favicon());
+    app.use(express.favicon(__dirname + '/public/img/favicon.ico'));
     app.use(express.logger('dev'));
     app.use(express.bodyParser());
     app.use(express.methodOverride());
