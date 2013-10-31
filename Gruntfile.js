@@ -50,9 +50,8 @@ module.exports = function (grunt) {
                     dest: 'public/yui_config.js',
                     root: '/yui/build/',
                     combine: true, 
-                    comboBase: 'http://localhost:3000/combo?', 
                     groups: {
-                        losingApp: {
+                        mongoExplorer: {
                             combine: true,  
                             root: '',
                             modules: ['public/js/**.js'],

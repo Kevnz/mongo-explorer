@@ -25,7 +25,7 @@ exports.post = function(req, res){
 };
 
 exports.put = function(req, res){
-  	res.render('index', { title: 'Kickstarted App' });
+  	res.send(200);
 };
 
 exports.delete = function(req, res){
