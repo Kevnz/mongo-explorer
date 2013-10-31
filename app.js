@@ -35,10 +35,8 @@ app.get('/api/database', database.get);
 app.get('/api/collections', collections.get);
 
 app.use(function(err, req, res, next) {
-    //log error, redirect 
-    logger.logObject(err, 'Error Catch');
-
-    res.redirect('http://taxpayers.org.nz/')
+    
+    res.render('error', { title: 'Kickstarted App', error: err });
 });
 http.createServer(app).listen(app.get('port'), function(){
     console.log("Express server listening on port " + app.get('port') + " in " + app.get('env') +" mode");
