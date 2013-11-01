@@ -3,7 +3,7 @@ var express = require('express'),
     exphbs  = require('express3-handlebars'),
     routes = require('./routes'),
     database = require('./routes/database'),
-    collections = require('./routes/database'), //does not scale, do something about routes
+    collections = require('./routes/collections'), //does not scale, do something about routes
     http = require('http'),
     path = require('path'),
     app = express(),
@@ -33,9 +33,10 @@ app.configure('development', function(){
 app.get('/', routes.index);
 
 app.get('/api/database', database.get);
-app.resource('/api/collections', collections);
+app.resource('api/collections', collections);
  
 http.createServer(app).listen(app.get('port'), function(){
+
     console.log("Express server listening on port " + app.get('port') + " in " + app.get('env') +" mode");
 });
 
