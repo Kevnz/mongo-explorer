@@ -1,4 +1,5 @@
 var express = require('express'),
+    Resource = require('express-resource')
     exphbs  = require('express3-handlebars'),
     routes = require('./routes'),
     database = require('./routes/database'),
@@ -32,8 +33,7 @@ app.configure('development', function(){
 app.get('/', routes.index);
 
 app.get('/api/database', database.get);
-app.get('/api/collections', collections.get);
-
+app.resource('/api/collections', collections);
  
 http.createServer(app).listen(app.get('port'), function(){
     console.log("Express server listening on port " + app.get('port') + " in " + app.get('env') +" mode");

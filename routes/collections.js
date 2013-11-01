@@ -7,7 +7,8 @@ var connect = function (){
     return db;
 };
 
-exports.get = function(req, res) {
+
+exports.index = function(req, res){
     var db = connect();
     db.admin.getCollectionNames(function (err, result) {
         db.close();
@@ -15,23 +16,34 @@ exports.get = function(req, res) {
     });
 };
 
-exports.post = function(req, res){
+exports.new = function(req, res){
+    res.send(200);
+};
+
+exports.create = function(req, res){
     var db = connect();
-    var collection = req.params.db;
+    var collection = req.params.collection;
     db.createCollection(collection, function(err,result){
         db.close();
         res.send(200, {name : collection });
     });
 };
 
-exports.put = function(req, res){
-    res.send(200);
+exports.show = function(req, res){
+ 
 };
 
-exports.delete = function(req, res){
+exports.edit = function(req, res){
+ 
+};
 
+exports.update = function(req, res){
+ 
+};
+
+exports.destroy = function(req, res){
     var db = connect();
-    var collection = req.params.db;
+    var collection = req.params.collection;
     db.dropCollection(collection, function(err,result){
         db.close();
         res.send(200, result);
