@@ -1,0 +1,60 @@
+@import "compass";
+
+
+.pure-button-default,
+.pure-button,
+.pure-button-info,
+.pure-button-success,
+.pure-button-danger,
+.pure-button-warning,
+.pure-button-secondary {
+    color: white;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+.pure-button-default {
+    color:black;
+    @include bg($default-button);
+    &:active  {
+        @include active-bg($default-button); 
+    }
+}
+.pure-button-primary { 
+    @include bg($primary-button);
+    &:active  {
+        @include active-bg($primary-button); 
+    }
+}
+.pure-button-info { 
+    @include bg($inverse);
+    &:active  {
+        @include active-bg($inverse); 
+    }
+}
+.pure-button-success {
+    @include bg($success);
+    &:active  {
+        @include active-bg($success); 
+    }
+}
+
+.pure-button-danger {
+    @include bg($danger);
+    &:active  {
+        @include active-bg($danger); 
+    }
+}
+
+.pure-button-warning {
+    @include bg($warning);
+    &:active  {
+        @include active-bg($warning); 
+    }
+}
+
+.pure-button-secondary {
+    @include bg($secondary);
+    &:active  {
+        @include active-bg($secondary); 
+    }
+}

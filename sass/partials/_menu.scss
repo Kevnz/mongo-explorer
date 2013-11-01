@@ -1,0 +1,49 @@
+@import "compass";
+ 
+
+ /*
+
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#04519b), color-stop(60%, #033c73), to(#02325f));
+  background-image: -webkit-linear-gradient(#04519b, #033c73 60%, #02325f);
+  background-image: -moz-linear-gradient(top, #04519b, #033c73 60%, #02325f);
+  background-image: linear-gradient(#04519b, #033c73 60%, #02325f);
+  background-repeat: no-repeat;
+  border-bottom: 1px solid #022241;
+
+  */
+.pure-menu.pure-menu-open.pure-menu-primary {
+    color:$light;
+
+    @include bg($primary);
+    &:active  {
+        @include active-bg($primary); 
+    }
+    li.pure-menu-active {
+        background:$primary-dark
+    }
+}
+.pure-menu.pure-menu-open.pure-menu-inverse {
+    @include bg($inverse);
+    color:$light;
+}
+.pure-menu.pure-menu-primary  {
+    a {
+       color:$light;
+    }
+    a:hover {
+        color:$light;
+        background:$primary-dark;
+    }
+}
+.pure-menu.pure-menu-inverse {
+    a {
+       color:$light;
+    }
+    a:hover {
+        color:$light;
+        background:$inverse-dark;
+    }
+    li.pure-menu-active {
+        background:$inverse-dark
+    }
+}
