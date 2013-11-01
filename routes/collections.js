@@ -7,7 +7,7 @@ var connect = function (){
 	return db;
 };
 
-exports.get = function(req, res){
+exports.get = function(req, res) {
 	var db = connect();
 	db.admin.getCollectionNames(function (err, result) {
 		db.close();
@@ -30,7 +30,7 @@ exports.put = function(req, res){
 
 exports.delete = function(req, res){
 
-		var db = connect();
+	var db = connect();
 	var collection = req.params.db;
 	db.dropCollection(collection, function(err,result){
 		db.close();
