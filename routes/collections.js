@@ -10,9 +10,17 @@ var connect = function (){
 
 exports.index = function(req, res){
     var db = connect();
-    db.admin.getCollectionNames(function (err, result) {
+    db.collectionNames(function (err, result) {
+        console.log(err);
+        console.log(result);
         db.close();
-        res.send(200, result);
+        var collections = [];
+        for (var i = 0; i < result.length; i++) {
+            if (result[i].name.indexOf('system')===-1) {
+                collections.push({name: result[i].name.replace(config.get('db-name')+'.', '')});
+            }
+        }
+        res.send(200, collections);
     });
 };
 
@@ -30,17 +38,14 @@ exports.create = function(req, res){
 };
 
 exports.show = function(req, res){
- 
-};
+    var db = connect();
+    var collection = req.params.collection;
+    db.collection(collection).find().toArray(function (err, items) {
+        db.close();
+        res.send(200, items);
+    });
 
-exports.edit = function(req, res){
- 
 };
-
-exports.update = function(req, res){
- 
-};
-
 exports.destroy = function(req, res){
     var db = connect();
     var collection = req.params.collection;

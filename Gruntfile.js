@@ -49,12 +49,12 @@ module.exports = function (grunt) {
                 options: {
                     dest: 'public/yui_config.js',
                     root: '/yui/build/',
-                    combine: true, 
+                    combine: true,
                     groups: {
                         mongoExplorer: {
-                            combine: true,  
+                            combine: false,
                             root: '',
-                            modules: ['public/js/**.js'],
+                            modules: ['public/js/**/**.js'],
                             processPath: function (p) {
                                 return p.replace('public', '');
                             },
