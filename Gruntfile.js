@@ -10,7 +10,7 @@ module.exports = function (grunt) {
             }
         },
         watch: {
-            files: ['public/js/*', 'public/js/**.js','sass/*.scss', 'app.js','lib/*', 'views/*.*', 'views/layouts/*.*'],
+            files: ['public/js/*','public/js/**/**.js', 'public/js/**.js','sass/*.scss', 'app.js','lib/*', 'views/*.*', 'views/layouts/*.*'],
             tasks: [ 'jshint', 'compass', 'yuiConfig', 'copy', 'bower'],
             options: {
                 livereload: true,
@@ -48,15 +48,16 @@ module.exports = function (grunt) {
             app: {
                 options: {
                     dest: 'public/yui_config.js',
-                    root: '/yui/build/',
+                    root: '/build/',
                     combine: true,
                     groups: {
                         mongoExplorer: {
                             combine: false,
-                            root: '',
+                            root: '/',
                             modules: ['public/js/**/**.js'],
                             processPath: function (p) {
-                                return p.replace('public', '');
+                                console.log(p);
+                                return p.replace('public', '..');
                             },
                             excludeFiles: ['public/js/lib/**.js']
                         }

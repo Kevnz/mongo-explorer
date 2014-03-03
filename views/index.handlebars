@@ -1,8 +1,20 @@
 <div class="pure-splash pure-u-1">
-    <h1 class="pure-u-1">{{title}}
-    <h2 class="pure-u">Kickstarted app</h2>
+    <h1 class="pure-u-1">{{title}}</h1>
 
 </div>
-<div class="content">
-    <p> Welcome to {{title}}</p>
+<div id="app" class="content"> 
 </div>
+
+ 
+
+<script>
+YUI().use('mongo-explorer', function (Y) {
+   var app = new Y.MongoExplorerApp({
+            transitions: true,
+            viewContainer: '#app',
+            container: '#app'
+    }); 
+   app.render().dispatch();;
+
+});
+</script>

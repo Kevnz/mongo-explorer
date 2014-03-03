@@ -2,6 +2,7 @@ var express = require('express'),
     Resource = require('express-resource')
     exphbs  = require('express3-handlebars'),
     routes = require('./routes'),
+    combo = require('combohandler'),
     database = require('./routes/database'),
     collections = require('./routes/collections'), //does not scale, do something about routes
     http = require('http'),
@@ -33,8 +34,12 @@ app.configure('development', function(){
 app.get('/', routes.index);
 
 app.get('/api/database', database.get);
-app.resource('api/collections', collections);
- 
+app.resource('api/collections', collections); 
+
+var yuipath = path.join(__dirname, '/public/');
+
+app.get('/combo', combo.combine({rootPath: yuipath }), combo.respond);
+
 http.createServer(app).listen(app.get('port'), function(){
 
     console.log("Express server listening on port " + app.get('port') + " in " + app.get('env') +" mode");

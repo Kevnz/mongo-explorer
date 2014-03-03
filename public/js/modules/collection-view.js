@@ -10,13 +10,16 @@ Y.extend(CollectionView, Y.View, {
         list.after(['add', 'remove', 'reset'], this.render, this);
     },
     render: function () {
+        console.log('render');
         var container = this.get('container'),
-            templateNode = Y.one(this.template),
-            source = templateNode.getHTML(),
+            source = this.template,
             compiledTemplate = Y.Handlebars.compile(source),
             data = { items: this.get('modelList').toJSON() },
             html = compiledTemplate(data);
-        
+        Y.log(data);
+        Y.log(html);
+        Y.log(source);
+        container.setHTML('');
         container.setHTML(html);
 
         if (!container.inDoc()) {

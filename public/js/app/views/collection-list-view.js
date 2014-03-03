@@ -5,8 +5,8 @@ YUI.add('collection-list-view', function (Y) {
             
         },
         events: {
-            '#login-button': {
-                click: 'login'
+            '.collections': {
+                click: 'collectionSelected'
             }
         },
         onRender: function () {
@@ -17,10 +17,10 @@ YUI.add('collection-list-view', function (Y) {
             e.preventDefault();
             this.fire('loginChosen');
         },
-        register: function (e) {
+        collectionSelected: function (e) {
             e.preventDefault();
-            this.fire('registerChosen');
+            this.fire('collectionSelected', {collection: e.currentTarget.get('data-collection-name')});
         }
 
     });
-}, '0.0.0', { requires:['item-view' ]});
+}, '0.0.0', { requires:['collection-view']});
