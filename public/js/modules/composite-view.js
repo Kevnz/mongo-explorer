@@ -13,6 +13,7 @@ YUI.add('composite-view', function (Y, NAME) {
             return this.get('modelListTemplate');
         },
         initializer: function () {
+            Y.log('composite-view init');
             var model = this.get('model');
             var list = this.get('modelList');
             list.after(['add', 'remove', 'reset'], this.render, this);
@@ -24,6 +25,7 @@ YUI.add('composite-view', function (Y, NAME) {
             });
         },
         _renderModel: function (data, template) {
+            Y.log('composite-view _renderModel');
             var compiledTemplate = Y.Handlebars.compile(template),
                 html;
             try {
@@ -35,6 +37,7 @@ YUI.add('composite-view', function (Y, NAME) {
         },
         onRender: function () { },
         render: function () {
+            Y.log('composite-view render');
             var container = this.get('container');
             var modelMarkup = this._renderModel(this.get("model").toJSON(), Y.templates[this.modelTemplate()]);
             

@@ -32,7 +32,7 @@ app.configure('development', function(){
 });
 
 app.get('/', routes.index);
-
+app.get('/collection/:id', routes.index);
 app.get('/api/database', database.get);
 app.resource('api/collections', collections); 
 

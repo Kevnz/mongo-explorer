@@ -22,14 +22,12 @@ var ItemView = Y.Base.create('itemView', Y.View, [], {
             html;
         container = this.get('container');
         model = this.get('model') ? this.get('model').toJSON() : {};
-
-        if (this.useLoader) {
-            source = Y.templates[this.template];
-        } else {
-            source = Y.one(this.template).getHTML();
-        }
+        Y.log('~~~');
+        Y.log(model);
+        source =  this.template ;
         compiledTemplate = Y.Handlebars.compile(source);
         html = compiledTemplate(model);
+        Y.log(html);
         container.setHTML(html);
 
         if (!container.inDoc()) {

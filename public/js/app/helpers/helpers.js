@@ -12,11 +12,16 @@ YUI.add('helpers', function (Y) {
 
     Y.Handlebars.registerHelper('row', function (collection) {
         var display = [];
-        for (var prop in item) {
-            if( item.hasOwnProperty( prop ) ) {
-                display.push('<td>' + item[prop] + "</td>");
+        for (var i = 0; i < collection.length; i++) {
+            display.push('<tr>');
+        
+            for (var prop in collection[i]) {
+                if( collection[i].hasOwnProperty( prop ) ) {
+                    display.push('<td>' + collection[i][prop] + "</td>");
+                }
             }
-        }
+            display.push('</tr>');
+        };
         return new Y.Handlebars.SafeString(display.join(''));
     });
 

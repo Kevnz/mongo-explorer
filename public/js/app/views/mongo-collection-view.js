@@ -1,9 +1,8 @@
 YUI.add('mongo-collection-view', function (Y) {
-
-    Y.MongoCollectionView = Y.Base.create('mongoCollectionListView', Y.CompositeView, [], {
+    Y.log('mcv')
+    Y.MongoCollectionView = Y.Base.create('mongoCollectionListView', Y.ItemView, [], {
         initializer: function () {
-            
-            
+            Y.log('mongo-collection-view init');
         },
         events: {
             '.collections': {
@@ -15,4 +14,4 @@ YUI.add('mongo-collection-view', function (Y) {
 
         }
     });
-}, '0.0.0', { requires:['composite-view', 'handlebars', 'helpers']});
+}, '0.0.0', { requires:['item-view', 'handlebars', 'helpers']});

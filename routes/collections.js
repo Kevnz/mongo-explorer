@@ -7,12 +7,9 @@ var connect = function (){
     return db;
 };
 
-
 exports.index = function(req, res){
     var db = connect();
     db.collectionNames(function (err, result) {
-        console.log(err);
-        console.log(result);
         db.close();
         var collections = [];
         for (var i = 0; i < result.length; i++) {
@@ -40,12 +37,16 @@ exports.create = function(req, res){
 exports.show = function(req, res){
     var db = connect();
     var collection = req.params.collection;
-    db.collection(collection).find().toArray(function (err, items) {
-        db.close();
-        res.send(200, items);
+    var start = req.query.start || 
+    db.collection(collection).count(function(cerr, count) {
+        db.collection(collection).find().limit(200).toArray(function (err, items) {
+            db.close();
+            res.send(200, { collectionName: collection, count: count, items: items });
+        });
     });
-
 };
+
+
 exports.destroy = function(req, res){
     var db = connect();
     var collection = req.params.collection;

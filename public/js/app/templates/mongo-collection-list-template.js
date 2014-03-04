@@ -5,3 +5,4 @@ YUI.add('mongo-collection-list-template', function (Y) {
  
 }, '0.0.1', {
     requires:['template-loader', 'handlebars']
+});

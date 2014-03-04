@@ -11,9 +11,9 @@ module.exports = function (grunt) {
         },
         watch: {
             files: ['public/js/*','public/js/**/**.js', 'public/js/**.js','sass/*.scss', 'app.js','lib/*', 'views/*.*', 'views/layouts/*.*'],
-            tasks: [ 'jshint', 'compass', 'yuiConfig', 'copy', 'bower'],
+            tasks: [ 'jshint', 'compass', 'yuiConfig', 'copy'],
             options: {
-                livereload: true,
+                livereload: 1337,
             }
         },
         jshint: {
@@ -41,7 +41,7 @@ module.exports = function (grunt) {
                 ignores: ['public/js/lib/*.js']
             }, 
             lib_test: {
-                src: ['public/js/**.js','lib/*.js', 'routes/*.js']
+                src: ['public/js/**.js','public/js/**/**.js','lib/*.js', 'routes/*.js']
             }
         },
         yuiConfig: {

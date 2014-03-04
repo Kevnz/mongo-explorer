@@ -45,21 +45,19 @@ Y.MongoExplorerApp = Y.App.create('mongoExApp', Y.App, [], {
     listCollectionContents: function (req, res, next) {
         Y.log('listCollectionContents');
         this.showView('loading');
-        var list = new Y.data.MongoCollection({name: req.id});
-        Y.log(list);
-        list.load(function() {
-            Y.log(list);
-            var collectionFromDB = Y.data.MongoCollectionList({name:req.id});
-            collectionFromDB.load (function () {
-                Y.log(collectionFromDB);
-                Y.log(Y.templates);
-                self.showView('collection', { model: list, 
-                    modeList:collectionFromDB, 
-                    modelTemplate: Y.templates.MongoCollectionTemplate,
-                    modelListTemplate:Y.templates.MongoCollectionListTemplate
-                }); 
-            });
-        })
+        Y.log(Y.data);
+        var collectionFromDB = new Y.data.MongoCollection({collectionName:req.params.id});
+        var self = this;
+        collectionFromDB.load(function () {
+            Y.log('collLoad')
+            Y.log(collectionFromDB.get('modelList')); 
+            Y.log(Y.templates.MongoCollectionListTemplate);
+            Y.log(collectionFromDB.toJSON());
+            Y.log(Y.MongoCollectionView);
+            self.showView('collection', { model:collectionFromDB, 
+                template:Y.templates.MongoCollectionListTemplate
+            }); 
+        } );
     }
  
 
@@ -78,5 +76,16 @@ Y.MongoExplorerApp = Y.App.create('mongoExApp', Y.App, [], {
         }
     });
 
-}, '0.0.0', { requires:['base-base', 'app','app-create','collection', 'collection-list','collection-list-view',
-    'collection-list-template','loading-view', 'mongo-collection-view', 'mongo-collection']});
+}, '0.0.0', { requires:[
+    'base-base', 
+    'app',
+    'app-create',
+    'collection', 
+    'collection-list',
+    'collection-list-view',
+    'collection-list-template',
+    'loading-view', 
+    'mongo-collection-view', 
+    'mongo-collection',
+    'mongo-collection-list-template'
+]});

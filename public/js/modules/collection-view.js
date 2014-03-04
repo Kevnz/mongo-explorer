@@ -5,9 +5,10 @@ var CollectionView = function () {
 };
 
 Y.extend(CollectionView, Y.View, {
-    initializer: function () {
-        var list = this.get('modelList');
-        list.after(['add', 'remove', 'reset'], this.render, this);
+    initializer: function (config) {
+        Y.log(arguments); 
+        var list = this.get('modelList'); 
+        config.modelList.after(['add', 'remove', 'reset'], this.render, this);
     },
     render: function () {
         console.log('render');
