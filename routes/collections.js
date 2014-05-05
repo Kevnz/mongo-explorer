@@ -1,6 +1,5 @@
 var qconf = require('qconf'),
-    config = qconf();
-
+    config = qconf(); 
 var connect = function (){
     var mongo = require('mongoskin');
     var db = mongo.db(config.get('db-connection'));
@@ -36,6 +35,7 @@ exports.create = function(req, res){
 
 exports.show = function(req, res){
     var db = connect();
+    console.log(req.params.collection);
     var collection = req.params.collection;
     var start = req.query.start || 
     db.collection(collection).count(function(cerr, count) {

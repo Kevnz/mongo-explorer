@@ -1,14 +1,10 @@
 <div>
-	{{collectionName}}
-	<table class="pure-table pure-table-bordered pure-table-striped">
-		<thead>
-			{{{header items}}}
-		</thead>
-		<tbody>
-			{{{row items}}}
-		</tbody>
-	</table>
+	<h3>{{collectionName}} Collection</h3>
+	{{{dynamicDisplay items}}}
 	<div>
-		<button class="pure-button pure-button-default"><i class="fa fa-arrow-left"> </i></buttom>
+		{{{pager count}}}
+		<button class="pure-button pure-button-default">
+			<i class="fa fa-arrow-left"> </i>
+		</buttom>
 	</div>
 </div>
